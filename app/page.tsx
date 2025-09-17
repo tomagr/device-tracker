@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -41,7 +39,7 @@ export default function Home() {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Manage and monitor all 15 devices at Amalgama. Keep track of who has
-            what equipment, when it was borrowed, and when it's due back.
+            what equipment, when it was borrowed, and when it&apos;s due back.
           </p>
         </div>
 
@@ -177,7 +175,7 @@ export default function Home() {
               Return Device
             </h3>
             <p className="text-gray-600 mb-4">
-              Return equipment when you're done using it
+              Return equipment when you&apos;re done using it
             </p>
             <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
               Return
@@ -212,7 +210,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">
-                    MacBook Pro 16"
+                    MacBook Pro 16&quot;
                   </p>
                   <p className="text-sm text-gray-500">
                     Checked out by Sarah Chen
@@ -240,7 +238,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">
-                    iPad Pro 12.9"
+                    iPad Pro 12.9&quot;
                   </p>
                   <p className="text-sm text-gray-500">
                     Returned by Mike Johnson
