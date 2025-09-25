@@ -22,7 +22,7 @@ export default function Home() {
                 </svg>
               </div>
               <h1 className="text-2xl font-bold text-gray-900">
-                Device Tracker
+                Device Tracker - For the Academy
               </h1>
             </div>
             <div className="text-sm text-gray-500">Amalgama</div>
