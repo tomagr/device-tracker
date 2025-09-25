@@ -38,8 +38,57 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-# Project instructions
+# Device Tracker Platform
+
 This platform helps us keep track of the devices we use at Amalgama.
 We currently manage around 15 devices, and the system makes it easy to see who has each device at any given time.
 
 The goal is to ensure transparency, avoid lost devices, and simplify the process of lending and returning equipment.
+
+## Features
+
+- **Location Tracking**: View your current location on Google Maps
+- **Device Management**: Track device checkouts and returns
+- **Real-time Status**: See which devices are available or checked out
+- **User-friendly Interface**: Clean, modern design with responsive layout
+
+## Google Maps Setup
+
+To enable the location tracking feature, you need to set up a Google Maps API key:
+
+### 1. Get a Google Maps API Key
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+2. Create a new project or select an existing one
+3. Enable the **Maps JavaScript API**
+4. Create credentials (API Key)
+5. Restrict the API key to your domain for security
+
+### 2. Configure the API Key
+
+Create a `.env.local` file in the root directory and add your API key:
+
+```bash
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_actual_api_key_here
+```
+
+### 3. Location Permissions
+
+The app will request location permissions from your browser. Make sure to:
+- Allow location access when prompted
+- Check that location services are enabled on your device
+- Ensure you're using HTTPS in production (required for geolocation)
+
+### 4. API Key Restrictions (Recommended)
+
+For security, restrict your API key in the Google Cloud Console:
+- **Application restrictions**: HTTP referrers
+- **Website restrictions**: Add your domain(s)
+- **API restrictions**: Limit to Maps JavaScript API
+
+## Development Notes
+
+- The map component is fully responsive and mobile-friendly
+- Location detection includes error handling and fallbacks
+- Console logging follows the format: `LOG =====> {message}`
+- The map shows a custom marker for your current location

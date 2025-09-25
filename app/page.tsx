@@ -1,4 +1,9 @@
+import GoogleMap from "./components/GoogleMap";
+
 export default function Home() {
+  // You'll need to set this environment variable
+  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
@@ -6,9 +11,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-               
-              </div>
+              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center"></div>
               <h1 className="text-2xl font-bold text-gray-900">
                 Device Tracker - For the Academy
               </h1>
@@ -29,6 +32,95 @@ export default function Home() {
             Manage and monitor all 15 devices at Amalgama. Keep track of who has
             what equipment, when it was borrowed, and when it&apos;s due back.
           </p>
+        </div>
+
+        {/* Location Map Section */}
+        <div className="mb-12">
+          <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 flex items-center">
+                <svg
+                  className="w-6 h-6 text-indigo-600 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                Your Current Location
+              </h3>
+              <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                Live Location
+              </span>
+            </div>
+            <p className="text-gray-600 mb-4">
+              This shows your current location to help with device tracking and
+              logistics.
+            </p>
+            {googleMapsApiKey ? (
+              <GoogleMap apiKey={googleMapsApiKey} />
+            ) : (
+              <div className="flex items-center justify-center h-96 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300">
+                <div className="text-center">
+                  <svg
+                    className="w-12 h-12 text-gray-400 mx-auto mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                    />
+                  </svg>
+                  <h4 className="text-lg font-medium text-gray-900 mb-2">
+                    Google Maps API Key Required
+                  </h4>
+                  <p className="text-gray-600 max-w-sm">
+                    To display your location, please set the{" "}
+                    <code className="bg-gray-200 px-1 rounded text-sm">
+                      NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+                    </code>{" "}
+                    environment variable.
+                  </p>
+                  <a
+                    href="https://console.cloud.google.com/apis/credentials"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700 text-sm font-medium"
+                  >
+                    Get API Key
+                    <svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Quick Stats */}
